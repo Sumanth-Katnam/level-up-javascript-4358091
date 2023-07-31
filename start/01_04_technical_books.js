@@ -22,7 +22,7 @@ class Book {
   }
 
   sell(numCopiesSold = 1) {
-    this.numCopies -= numCopiesSold;
+    this.numCopies = (this.numCopies < numSold)? 0: this.numCopies - numSold;
   }
   
   restock(numCopiesStocked = 5) {
@@ -31,3 +31,16 @@ class Book {
 }
 
 // Write your code here
+class TechnicalBook extends Book{
+  constructor(title, author, ISBN, numCopies, edition) {
+    super(title, author, ISBN, numCopies);
+    this.edition = edition;
+  }
+
+  getEdition(){
+    console.log(`The current version of this book is ${this.edition}.`);
+  }
+}
+
+const hcverma = new TechnicalBook("HC Verma", "HC Verma", "jkashd98as67dayus", 10, "12th Standard");
+hcverma.getEdition()
