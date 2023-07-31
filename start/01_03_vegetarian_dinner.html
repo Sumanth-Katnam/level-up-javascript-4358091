@@ -34,7 +34,17 @@
       }
     ]
     // Write your code here
+    function getVegetarian(menu){
+      const $menu = document.querySelector("ul#menu");
+      const vegItems = menu.filter((item) => item.isVegetarian);
+      vegItems.forEach((item) => {
+        let $li = document.createElement("li");
+        $li.textContent = item.name;
+        $menu.append($li);
+      });
+    }
 
+    getVegetarian(menu);
   </script>
 </body>
 
