@@ -18,7 +18,36 @@
 
   <script>
     // Write your code here
+    
+    // Method 1
+    // document.querySelectorAll('button').forEach($btn => {
+    //   $btn.addEventListener('click', (ele) => {
+    //     document.body.style.background = ele.srcElement.id;
+    //   });
+    // });
 
+    // Method 2
+    // const changeColor = (color) => {
+    //   document.body.style.background = color;
+    // }
+
+    // document.querySelectorAll('button').forEach($btn => {
+    //   $btn.addEventListener('click', (ele) => changeColor(ele.srcElement.id));
+    // });
+
+    // Method 3 - Closures
+    const changeColor = (color) => {
+      return () => {
+        document.body.style.background = color;
+      }
+    }
+    const blueBtn = changeColor("blue");
+    const pinkBtn = changeColor("pink");
+    const greenBtn = changeColor("green");
+
+    document.querySelector("button#blue").addEventListener('click', blueBtn);
+    document.querySelector("button#pink").addEventListener('click', pinkBtn);
+    document.querySelector("button#green").addEventListener('click', greenBtn);
   </script>
 </body>
 
