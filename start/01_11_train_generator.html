@@ -16,7 +16,25 @@
 
   <script>
     // Write your code here
+    function* getStop(){
+      yield 1;
+      yield 2;
+      yield 3;
+      yield 4;
+      yield 5;
+    }
 
+    const stopGetter = getStop();
+
+    document.querySelector("button#next-stop").addEventListener("click", () => {
+      let stop = stopGetter.next();
+      if(stop.done){
+        document.querySelector("button#next-stop").setAttribute("disabled", true);
+        console.log("We made it!!");
+      } else {
+        console.log(`Current stop: ${stop.value}.`);
+      }
+    })
   </script>
 </body>
 
