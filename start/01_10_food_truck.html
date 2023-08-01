@@ -16,7 +16,27 @@
 
   <script>
     // Write your code here
+    const uniqueItems = new Set();
+    
+    const buildMenu = () => {
+      const $menu = document.querySelector("ul#combined-menu");
+      $menu.innerHTML = '';
+      uniqueItems.forEach((item) => {
+        let $item = document.createElement("li");
+        $item.textContent = item;
+        $menu.appendChild($item);
+      });
+    }
 
+    const AddItems = (vendorItems) => {
+      vendorItems.forEach(item => uniqueItems.add(item));
+      buildMenu();
+    }
+
+    AddItems(["pizza", "pasta"]);
+    AddItems(["pizza", "calzones"]);
+    AddItems(["lobster"]);
+    AddItems(["calzones"]);
   </script>
 </body>
 
