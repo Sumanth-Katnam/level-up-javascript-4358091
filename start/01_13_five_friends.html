@@ -16,7 +16,18 @@
 
   <script>
     // Write your code here
-    
+    const populateUsers = async () => {
+      let users = await fetch("https://randomuser.me/api/?results=9");
+      users = await users.json();
+
+      const $timeline = document.querySelector("#timeline");
+      users.results.forEach(user => {
+        let $img = document.createElement('img');
+        $img.src = user.picture.medium;
+        $timeline.appendChild($img);
+      });
+    }
+    populateUsers()
   </script>
 </body>
 
